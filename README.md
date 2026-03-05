@@ -1,1 +1,8 @@
-# ai-feature-prd-sample
+# AI Smart-Summarizer for SaaS
+Status: Draft / In-Review
+
+Target Audience: Engineering, Design, Stakeholders
+
+PM: Prerna
+
+1. Executive SummaryThe Problem: Users spend 40 minutes daily manually tagging and summarizing customer feedback.The Solution: An AI-powered classification engine that categorizes feedback sentiment and generates a "Top 3 Action Items" summary for PMs.2. User StoriesAs a PM, I want a summary of 100+ reviews so I can prioritize the roadmap without reading every single one.As a Developer, I want clear instructions on what the AI should ignore (spam, gibberish) to save on token costs.3. Technical Strategy (The "AI" Bit)This section shows you understand how AI products actually work.Model Selection: GPT-4o-mini (Chosen for low latency and cost-effectiveness for text classification).Methodology: RAG (Retrieval-Augmented Generation) will be used to ensure the AI only summarizes the provided text and doesn't "hallucinate" fake feedback.Prompt Strategy: (See prompts/system_prompt.txt in this repo).4. Success Metrics (KPIs)MetricTargetWhy?Accuracy> 85%Based on manual spot-checks against AI output.Latency< 3 secondsUsers won't wait longer for a summary.Token Cost< $0.05 / userEnsures the feature remains profitable.5. AI Risks & MitigationsHallucinations: Mitigation: We will implement a "Source Citation" feature where the AI highlights the exact review it used for the summary.Data Privacy: Mitigation: All PII (Personally Identifiable Information) will be scrubbed before sending data to the LLM API.6. Functional RequirementsInput: Bulk upload of .CSV or .JSON feedback files.Processing: Sentiment analysis (Positive/Neutral/Negative).Output: A Markdown-formatted summary with bullet points.
